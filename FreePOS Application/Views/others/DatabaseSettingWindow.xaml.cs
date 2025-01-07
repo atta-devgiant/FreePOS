@@ -25,15 +25,16 @@ namespace FreePOS.Views.others
         {
             InitializeComponent();
             tb_DatabaseServer.Text = AppSetting.DatabaseServer;
+            tb_DatabasePort.Text = AppSetting.DatabasePort;
             tb_DatabaseName.Text = AppSetting.DatabaseName;
             tb_DatabaseUsername.Text = AppSetting.DatabaseUsername;
             tb_DatabasePassword.Password = AppSetting.DatabasePassword;
         }
         private void Button_CheckDatabaseConnection_Click(object sender, RoutedEventArgs e)
         {
-            if (tb_DatabaseServer.Text != "" && tb_DatabaseName.Text != "" || tb_DatabaseUsername.Text != "" || tb_DatabasePassword.Password != "")
+            if (tb_DatabaseServer.Text != "" && tb_DatabasePort.Text != "" && tb_DatabaseUsername.Text != "" || tb_DatabasePassword.Password != "")
             {
-                dynamic result = databaseutils.checkServerConnectionWithCredentials(tb_DatabaseServer.Text, tb_DatabaseUsername.Text, tb_DatabasePassword.Password);
+                dynamic result = databaseutils.checkServerConnectionWithCredentials(tb_DatabaseServer.Text, tb_DatabasePort.Text, tb_DatabaseUsername.Text, tb_DatabasePassword.Password);
                 var isbool = (result is bool);
                 if (isbool) {
                     if (result == true)
@@ -63,9 +64,9 @@ namespace FreePOS.Views.others
         private void Button_Save_Click(object sender, RoutedEventArgs e)
         {
             btn_Save.IsEnabled = false;
-            if (tb_DatabaseServer.Text!=""&& tb_DatabaseName.Text != "" || tb_DatabaseUsername.Text != "" || tb_DatabasePassword.Password != "")
+            if (tb_DatabaseServer.Text!="" && tb_DatabasePort.Text != "" && tb_DatabaseName.Text != "" && tb_DatabaseUsername.Text != "" && tb_DatabasePassword.Password != "")
             {
-                AppSetting.saveDatabaseSettings(tb_DatabaseServer.Text, tb_DatabaseName.Text, tb_DatabaseUsername.Text, tb_DatabasePassword.Password);
+                AppSetting.saveDatabaseSettings(tb_DatabaseServer.Text, tb_DatabasePort.Text, tb_DatabaseName.Text, tb_DatabaseUsername.Text, tb_DatabasePassword.Password);
                 MessageBox.Show("Database Setting Updated, Please restart application", "Info");
             }
             else

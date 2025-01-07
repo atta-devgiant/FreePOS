@@ -19,7 +19,7 @@ namespace FreePOS.data.dapper
 {
     public static class databaseutils
     {
-        public static string connectionstring = "Server=localhost;Database=freepos;Uid=root;Pwd=brk@1234;";
+        public static string connectionstring = "Server=localhost;Port=3306;Database=freepos;Uid=root;Pwd=brk@1234;";
         public static string getkeyValuestoSqlAnd(dynamic keyvaluepairs) 
         {
             string s = "";
@@ -108,12 +108,12 @@ namespace FreePOS.data.dapper
         }
         public static string getConnectionString() 
         {
-            var connectionstringN  = "Server=" + AppSetting.DatabaseServer + ";Database=" + AppSetting.DatabaseName + ";Uid=" + AppSetting.DatabaseUsername + ";Pwd=" + AppSetting.DatabasePassword + ";";
+            var connectionstringN  = "Server=" + AppSetting.DatabaseServer + ";Port=" + AppSetting.DatabasePort + ";Database=" + AppSetting.DatabaseName + ";Uid=" + AppSetting.DatabaseUsername + ";Pwd=" + AppSetting.DatabasePassword + ";";
             return connectionstringN;
         }
         public static Boolean checkServerConnection()
         {
-            var serverconnection= "Server=" + AppSetting.DatabaseServer + ";Uid=" + AppSetting.DatabaseUsername + ";Pwd=" + AppSetting.DatabasePassword + ";";
+            var serverconnection= "Server=" + AppSetting.DatabaseServer + ";Port=" + AppSetting.DatabasePort + ";Uid=" + AppSetting.DatabaseUsername + ";Pwd=" + AppSetting.DatabasePassword + ";";
             try
             {
                 using (var connection = new MySqlConnection(serverconnection))
@@ -132,7 +132,7 @@ namespace FreePOS.data.dapper
 
         public static Boolean checkDatabase()
         {
-            var serverconnection = "Server=" + AppSetting.DatabaseServer + ";Database=" + AppSetting.DatabaseName + ";Uid=" + AppSetting.DatabaseUsername + ";Pwd=" + AppSetting.DatabasePassword + ";";
+            var serverconnection = "Server=" + AppSetting.DatabaseServer + ";Port=" + AppSetting.DatabasePort + ";Database=" + AppSetting.DatabaseName + ";Uid=" + AppSetting.DatabaseUsername + ";Pwd=" + AppSetting.DatabasePassword + ";";
             try
             {
                 using (var connection = new MySqlConnection(serverconnection))
@@ -148,9 +148,9 @@ namespace FreePOS.data.dapper
             }
         }
 
-        public static dynamic checkServerConnectionWithCredentials(string server, string user, string password)
+        public static dynamic checkServerConnectionWithCredentials(string server, string port, string user, string password)
         {
-            var serverconnection = "Server=" + server + ";Uid=" + user + ";Pwd=" + password + ";";
+            var serverconnection = "Server=" + server + ";Port=" + port + ";Uid=" + user + ";Pwd=" + password + ";";
             try
             {
                 using (var connection = new MySqlConnection(serverconnection))
@@ -168,7 +168,7 @@ namespace FreePOS.data.dapper
 
         public static void createdatabase()
         {
-            var serverconnection = "Server=" + AppSetting.DatabaseServer + ";Uid=" + AppSetting.DatabaseUsername + ";Pwd=" + AppSetting.DatabasePassword + ";";
+            var serverconnection = "Server=" + AppSetting.DatabaseServer + ";Port=" + AppSetting.DatabasePort + ";Uid=" + AppSetting.DatabaseUsername + ";Pwd=" + AppSetting.DatabasePassword + ";";
             using (var connection = new MySqlConnection(serverconnection))
             {
                 connection.Open();

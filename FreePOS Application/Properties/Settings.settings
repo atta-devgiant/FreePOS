@@ -36,10 +36,13 @@
       <Value Profile="(Default)">root</Value>
     </Setting>
     <Setting Name="DatabasePassword" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">brk@1234</Value>
     </Setting>
     <Setting Name="NumberOfReceiptToPrint" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="DatabasePort" Type="System.String" Scope="User">
+      <Value Profile="(Default)">3306</Value>
     </Setting>
   </Settings>
 </SettingsFile>

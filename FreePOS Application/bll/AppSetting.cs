@@ -19,6 +19,7 @@ namespace FreePOS.bll
         public static int NumberOfReceiptToPrint = Settings.Default.NumberOfReceiptToPrint;
         //database setting
         public static string DatabaseServer = Settings.Default.DatabaseServer;
+        public static string DatabasePort = Settings.Default.DatabasePort;
         public static string DatabaseName = Settings.Default.DatabaseName;
         public static string DatabaseUsername = Settings.Default.DatabaseUsername;
         public static string DatabasePassword = Settings.Default.DatabasePassword;
@@ -56,6 +57,7 @@ namespace FreePOS.bll
 
         public static void saveDatabaseSettings(
             string server,
+            string port,
             string database,
             string user,
             string password
@@ -63,12 +65,16 @@ namespace FreePOS.bll
         {
             Settings.Default.DatabaseServer = server;
             DatabaseServer = server;
+            
+            Settings.Default.DatabasePort = port;
+            DatabasePort = port;
 
             Settings.Default.DatabaseName = database;
             DatabaseName = database;
 
             Settings.Default.DatabaseUsername = user;
             DatabaseUsername = user;
+
 
             Settings.Default.DatabasePassword = password;
             DatabasePassword = password;
